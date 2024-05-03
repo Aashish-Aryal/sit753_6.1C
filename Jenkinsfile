@@ -16,12 +16,12 @@ pipeline {
                 success {
                     emailext subject: "Test Success",
                         body: "The tests have passed successfully.",
-                        to: "s224158554@deakin.edu.au"
+                        to: "harrydukehd1@gmail.com"
                 }
                 failure {
                     emailext subject: "Test Failure",
                         body: "The tests have failed. Please check the logs for details.",
-                        to: "s224158554@deakin.edu.au",
+                        to: "harrydukehd1@gmail.com",
                         attachLog: true
                 }
             }
@@ -39,12 +39,12 @@ pipeline {
                 success {
                     emailext subject: "Security Scan Success",
                         body: "The Security Scans have passed successfully.",
-                        to: "s224158554@deakin.edu.au"
+                        to: "harrydukehd1@gmail.com"
                 }
                 failure {
                     emailext subject: "Security Scan Failure",
                         body: "The Security Scans have failed. Please check the logs for details.",
-                        to: "s224158554@deakin.edu.au",
+                        to: "harrydukehd1@gmail.com",
                         attachLog: true
                 }
             }
