@@ -12,6 +12,20 @@ pipeline {
                 echo 'Unit Tests using TestComplete'
                 echo 'Integration Tests using TestComplete'
             }
+            post {
+                success {
+                    emailext subject: "Test Success",
+                        body: "The tests have passed successfully. Please check the logs for details.",
+                        to: "s224158554@deakin.edu.au"
+                        attachLog: true
+                }
+                failure {
+                    emailext subject: "Test Failure",
+                        body: "The tests have failed. Please check the logs for details.",
+                        to: "s224158554@deakin.edu.au",
+                        attachLog: true
+                }
+            }
         }
         stage('Code Analysis') {
             steps {
@@ -21,6 +35,20 @@ pipeline {
         stage('Security Scan') {
             steps {
                 echo 'Code security check using Flawnter'
+            }
+            post {
+                success {
+                    emailext subject: "Security Scan Success",
+                        body: "The Security Scans have passed successfully. Please check the logs for details.",
+                        to: "s224158554@deakin.edu.au"
+                        attachLog: true
+                }
+                failure {
+                    emailext subject: "Security Scan Failure",
+                        body: "The Security Scans have failed. Please check the logs for details.",
+                        to: "s224158554@deakin.edu.au",
+                        attachLog: true
+                }
             }
         }
         stage('Deploy to Staging') {
