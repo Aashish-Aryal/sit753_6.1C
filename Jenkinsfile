@@ -15,9 +15,8 @@ pipeline {
             post {
                 success {
                     emailext subject: "Test Success",
-                        body: "The tests have passed successfully. Please check the logs for details.",
+                        body: "The tests have passed successfully.",
                         to: "s224158554@deakin.edu.au"
-                        attachLog: true
                 }
                 failure {
                     emailext subject: "Test Failure",
@@ -39,9 +38,8 @@ pipeline {
             post {
                 success {
                     emailext subject: "Security Scan Success",
-                        body: "The Security Scans have passed successfully. Please check the logs for details.",
+                        body: "The Security Scans have passed successfully.",
                         to: "s224158554@deakin.edu.au"
-                        attachLog: true
                 }
                 failure {
                     emailext subject: "Security Scan Failure",
