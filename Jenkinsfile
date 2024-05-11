@@ -14,10 +14,12 @@ pipeline {
             }
             post {
                 always {
-                    emailext subject: "Test Results",
-                        body: "The tests have completed. Please check the logs for details.",
-                        to: "harrydukehd1@gmail.com"
-                        attachLog: true
+                    script {
+                        emailext subject: "Test Results",
+                            body: "The tests have completed. Please check the logs for details.",
+                            to: "harrydukehd1@gmail.com"
+                            attachLog: true
+                    }
                 }
                 // failure {
                     // emailext subject: "Test Failure",
@@ -38,10 +40,12 @@ pipeline {
             }
             post {
                 always {
-                    emailext subject: "Security Scan Results",
-                        body: "The Security Scans have completed. Please check the logs for details.",
-                        to: "harrydukehd1@gmail.com"
-                        attachLog: true
+                    script{
+                        emailext subject: "Security Scan Results",
+                            body: "The Security Scans have completed. Please check the logs for details.",
+                            to: "harrydukehd1@gmail.com"
+                            attachLog: true
+                    }
                 }
                 // failure {
                     // emailext subject: "Security Scan Failure",
