@@ -13,17 +13,18 @@ pipeline {
                 echo 'Integration Tests using TestComplete'
             }
             post {
-                success {
-                    emailext subject: "Test Success",
-                        body: "The tests have passed successfully.",
+                always {
+                    emailext subject: "Test Results",
+                        body: "The tests have completed. Please check the logs for details.",
                         to: "harrydukehd1@gmail.com"
-                }
-                failure {
-                    emailext subject: "Test Failure",
-                        body: "The tests have failed. Please check the logs for details.",
-                        to: "harrydukehd1@gmail.com",
                         attachLog: true
                 }
+                // failure {
+                    // emailext subject: "Test Failure",
+                        // body: "The tests have failed. Please check the logs for details.",
+                        // to: "harrydukehd1@gmail.com",
+                        // attachLog: true
+                // }
             }
         }
         stage('Code Analysis') {
@@ -36,17 +37,18 @@ pipeline {
                 echo 'Code security check using Flawnter'
             }
             post {
-                success {
-                    emailext subject: "Security Scan Success",
-                        body: "The Security Scans have passed successfully.",
+                always {
+                    emailext subject: "Security Scan Results",
+                        body: "The Security Scans have completed. Please check the logs for details.",
                         to: "harrydukehd1@gmail.com"
-                }
-                failure {
-                    emailext subject: "Security Scan Failure",
-                        body: "The Security Scans have failed. Please check the logs for details.",
-                        to: "harrydukehd1@gmail.com",
                         attachLog: true
                 }
+                // failure {
+                    // emailext subject: "Security Scan Failure",
+                        // body: "The Security Scans have failed. Please check the logs for details.",
+                        // to: "harrydukehd1@gmail.com",
+                        // attachLog: true
+                // }
             }
         }
         stage('Deploy to Staging') {
