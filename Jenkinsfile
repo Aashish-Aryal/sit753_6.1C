@@ -15,10 +15,9 @@ pipeline {
             post {
                 always {
                     script {
-                        emailext subject: "Test Results",
+                        emailext attachLog: true, subject: "Test Results",
                             body: "The tests have completed. Please check the logs for details.",
                             to: "harrydukehd1@gmail.com"
-                            attachLog: true
                     }
                 }
                 // failure {
