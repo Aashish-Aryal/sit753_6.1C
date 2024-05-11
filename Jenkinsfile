@@ -41,10 +41,11 @@ pipeline {
             post {
                 always {
                     script{
+                        def logFiles = currentBuild.rawBuild.getLogFile().text
                         emailext subject: "Security Scan Results",
                             body: "The Security Scans have completed. Please check the logs for details.",
                             to: "harrydukehd1@gmail.com"
-                            attachLog: true
+                            attachmentsPattern: logFiles
                     }
                 }
                 // failure {
